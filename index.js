@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const API_KEY =
-  "sk_prod_TfMbARhdgues5AuIosvvdAC9WsA5kXiZlW8HZPaRDlIbCpSpLsXBeZO7dCVZQwHAY3P4VSBPiiC33poZ1tdUj2ljOzdTCCOSpUZ_3912"; // Replace 'your-api-key' with your actual API key
+  "sk_prod_TfMbARhdgues5AuIosvvdAC9WsA5kXiZlW8HZPaRDlIbCpSpLsXBeZO7dCVZQwHAY3P4VSBPiiC33poZ1tdUj2ljOzdTCCOSpUZ_3912";
 const BASE_URL = "https://api.fillout.com/v1/api/forms";
 
 app.get("/:formId/filteredResponses", async (req, res) => {
@@ -81,13 +81,9 @@ app.get("/:formId/filteredResponses", async (req, res) => {
         }
       }
 
-      console.log("all pages: ", response.data.pageCount);
-      console.log("total: ", response.data.totalResponses);
-
       let allFilters = filters;
       if (typeof filters == "string") {
         let filtersString = filters;
-        console.log(filtersString);
 
         let jsonBody = filtersString.slice(1, -1);
 
@@ -125,7 +121,6 @@ app.get("/:formId/filteredResponses", async (req, res) => {
           });
         });
         if (filtersMatched == allFilters.length) {
-          console.log("returned response: ", response);
           return true;
         }
         return false;
