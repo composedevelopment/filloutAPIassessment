@@ -75,7 +75,7 @@ app.get("/:formId/filteredResponses", async (req, res) => {
           };
           let newResponse = await axios.get(url, { headers, params });
           for (let k = 0; k < newResponse.data.totalResponses; k++) {
-            allResponses.push(newResponse.data.responses[i]);
+            allResponses.push(newResponse.data.responses[k]);
           }
           offsetMultiplier += 1;
         }
